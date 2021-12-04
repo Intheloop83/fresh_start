@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# incognito files
+mysite/fresh_start/templates/fresh_start/comments.html
+virtual_fresh/
