@@ -1,0 +1,16 @@
+{% block body %}
+<h1>Comments</h1>
+{% if message %}
+<div>
+    {{ message }}
+</div>
+{% endif %}
+<form action="{% url 'comments' %}" method="post">
+    {% csrf_token %}
+    <input name="organization_name" type="text" />
+    <input name="resource" type="text" />
+    <input name="website_address" type="text" />
+    <input name="street_address" type="text" />
+    <input name="phone_number" type="text" />
+</form>
+{% endblock %}
