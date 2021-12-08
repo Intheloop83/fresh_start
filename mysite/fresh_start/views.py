@@ -21,11 +21,9 @@ def resources(request):
 class ResourcePostListView(ListView):
     model = ResourcePost
     template_name = 'fresh_start/resources.html'
+    context_object_name = 'posts'
+    ordering = ['-date_created']
 
 
-#class ResourcePostListView(ListView):
- #   model = ResourcePost
-  #  template_name = 'fresh_start/resources.html'
-   # context_object_name = 'posts'
-    # ordering = ['-date_posted']
-
+class ResourcePostDetailView(DetailView):
+    model = ResourcePost
