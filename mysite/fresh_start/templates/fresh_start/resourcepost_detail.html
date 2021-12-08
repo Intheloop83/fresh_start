@@ -1,0 +1,15 @@
+{% extends "fresh_start/base.html" %}
+{% block content %}
+    <!-- <h1>Resources Page</h1> -->
+    <article class="media content-section">
+        <div class="media-body">
+            <ul>
+                <h2 class="article-title" href="#">{{ object.title }}</h2>
+                {{ object.category }}
+                <img src="{{ post.thumbnail }}">
+                <p class="article-content">{{ object.content }}</p>
+                {{ object.date_created }}
+            </ul>
+        </div>
+    </article>
+{% endblock content %}
