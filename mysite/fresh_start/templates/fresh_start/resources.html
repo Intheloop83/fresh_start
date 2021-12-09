@@ -1,18 +1,6 @@
 {% extends "fresh_start/base.html" %}
 {% block content %}
-<h1>Fresh Start Resources</h1>
-
-<h2>Just Food</h2>
-<a href="http://www.justfood.org"> Resource Website</a>
-
-<a href="resourcecom.html">Comments Page</a>
-
-<h2>Food Bank for New York City</h2>
-<a href="http://www.foodbanknyc.org"> Resource Website</a>
-
-<h2>Fortune Society</h2>
-<a href="http://www.fortunesociety.org"> Resource Website</a>
-
+<h1>Resources Page</h1>
 <article class="media content-section">
     <div class="media-body">
         <ul>
@@ -21,6 +9,7 @@
             <img src="{{ post.thumbnail }}">
             <p class="article-content">{{ post.excerpt }}</p>
             <p class="article-content"><a href="{% url 'post-detail' post.id %}">Read More</a></p>
+            <h1>Hello World!</h1>
             {{ post.date_created }}
             {% endfor%}
         </ul>
