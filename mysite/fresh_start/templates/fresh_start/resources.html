@@ -1,17 +1,18 @@
 {% extends "fresh_start/base.html" %}
 {% block content %}
-    <h1>Resources Page</h1>
-    <article class="media content-section">
-        <div class="media-body">
-            <ul>
-                {% for post in object_list %}
-                <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
-                <img src="{{ post.thumbnail }}">
-                <p class="article-content">{{ post.excerpt }}</p><p class="article-content"><a href="{% url 'post-detail' post.id %}">Read More</a></p>
-                <h1>Hello World!</h1>
-                {{ post.date_created }}
-                {% endfor%}
-            </ul>
-        </div>
-    </article>
+<h1>Resources Page</h1>
+<article class="media content-section">
+    <div class="media-body">
+        <ul>
+            {% for post in object_list %}
+            <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+            <img src="{{ post.thumbnail }}">
+            <p class="article-content">{{ post.excerpt }}</p>
+            <p class="article-content"><a href="{% url 'post-detail' post.id %}">Read More</a></p>
+            <h1>Hello World!</h1>
+            {{ post.date_created }}
+            {% endfor%}
+        </ul>
+    </div>
+</article>
 {% endblock content %}
