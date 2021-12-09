@@ -8,6 +8,7 @@
                 <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
                 <img src="{{ post.thumbnail }}">
                 <p class="article-content">{{ post.excerpt }}</p><p class="article-content"><a href="{% url 'post-detail' post.id %}">Read More</a></p>
+                <h1>Hello World!</h1>
                 {{ post.date_created }}
                 {% endfor%}
             </ul>
