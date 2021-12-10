@@ -20,5 +20,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('fresh_start.urls')),
     path('', include('add_resources.html')),
-    path('', include('comments.html')),
 ]
