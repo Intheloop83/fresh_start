@@ -2,12 +2,17 @@ from django.db import models
 from datetime import datetime
 
 # Create your models here.
+
+
 class Categories(models.TextChoices):
     FOOD = 'food'
+
+
 class ResourcePost(models.Model):
     title = models.CharField(max_length=50)
     slug = models.SlugField()
-    category = models.CharField(max_length=50, choices=Categories.choices, default=Categories.FOOD)
+    category = models.CharField(
+        max_length=50, choices=Categories.choices, default=Categories.FOOD)
     thumbnail = models.ImageField(upload_to='photos/%Y/%m/%d/')
     excerpt = models.CharField(max_length=150)
     month = models.CharField(max_length=3)
