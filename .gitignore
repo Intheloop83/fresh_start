@@ -131,3 +131,4 @@ dmypy.json
 # incognito files
 mysite/fresh_start/templates/fresh_start/comments.html
 virtual_fresh/
+mysite/fresh_start/migrations/0001_initial.py
