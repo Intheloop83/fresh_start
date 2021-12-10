@@ -19,5 +19,4 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('fresh_start.urls')),
-    path('', include('add_resources.html')),
 ]
