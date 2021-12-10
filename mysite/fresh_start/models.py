@@ -13,8 +13,8 @@ class ResourcePost(models.Model):
     slug = models.SlugField()
     category = models.CharField(
         max_length=50, choices=Categories.choices, default=Categories.FOOD)
-    thumbnail = models.ImageField(upload_to='photos/%Y/%m/%d/')
-    excerpt = models.CharField(max_length=150)
+    thumbnail = models.URLField()
+
     month = models.CharField(max_length=3)
     day = models.CharField(max_length=2)
     content = models.TextField()
