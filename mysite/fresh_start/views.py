@@ -7,6 +7,10 @@ def home(request):
     return render(request, 'fresh_start/home.html')
 
 
+def resourcecom(request):
+    return render(request, 'fresh_start/resourcecom.html')
+
+
 def about(request):
     return render(request, 'fresh_start/about.html', {'title': 'About'})
 
