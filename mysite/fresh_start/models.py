@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from django.urls import reverse
 
 # Create your models here.
 
@@ -19,3 +20,6 @@ class ResourcePost(models.Model):
     content = models.TextField()
     featured = models.BooleanField(default=False)
     date_created = models.DateTimeField(default=datetime.now, blank=True)
+
+    def get_absolute_url(self):
+        return reverse('post-detail', kwargs={'pk: self.pk'})

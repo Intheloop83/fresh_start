@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import ResourcePost
 
 
@@ -32,6 +32,9 @@ def resourcepost_detail(request, resourcenumber):
 def addresource(request):
     return render(request, 'fresh_start/addresource.html')
 
+
+def add_resources(request):
+    return render(request, 'fresh_start/add_resources.html')
 
 # def create(request):
     if request.method == 'GET':
@@ -70,3 +73,19 @@ class ResourcePostDetailView(DetailView):
 class ResourceCommentsView(ListView):
     model = ResourcePost
     template_name = 'fresh_start/resourcepost_detail.html'
+
+class ResourceCreateView(CreateView):
+    model = ResourcePost
+    fields = ['title', 'content']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+class ResourceUpdateView(UpdateView):
+    model = ResourcePost
+    fields = ['title', 'content']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
