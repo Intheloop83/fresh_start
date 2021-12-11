@@ -61,28 +61,6 @@
                 </div>
             </div>
         </main>
-        {% if message %}
-        <div>
-            {{ message }}
-        </div>
-        {% endif %}
-        <form action="/add_resources.html">
-        >
-            {% csrf_token %}
-            <label for="orgname">Organization Name:</label>
-            <input type="text" id="orgname" name="orgname"/><br><br>
-            <label for="resource">Resource:</label>
-            <input type="text" id="resource" name="resource"/><br><br>
-            <label for="webaddress">Website Address:</label>
-            <input type="url" id="webaddress" name="webaddress"/><br><br>
-            <label for="straddress">Street Adrress:</label>
-            <input type="text" id="straddress" name="straddress"/><br><br>
-            <label for="phonumber">Phone Number:</label>
-            <input type="number" id="phonumber" name="phonumber"/><br><br>
-            <input type="submit" value="Submit"/>
-            <br><br>
-        <h4>Thanks for your addition and support for justice impacted individuals, as well as our mission to end food insecurity!</h4>
-        </form>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
