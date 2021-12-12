@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import ResourcePost
-
+from django.http import HttpResponseRedirect
+from django.template import Template , Context
 
 def home(request):
     return render(request, 'fresh_start/home.html')
@@ -89,3 +90,7 @@ class ResourceUpdateView(UpdateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+class ResourceDeleteView(DeleteView):
+    model = ResourcePost
+    success_url = '_/_'

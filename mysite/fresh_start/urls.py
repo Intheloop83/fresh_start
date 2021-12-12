@@ -1,5 +1,7 @@
 from django.urls import path
-from .views import ResourcePostListView, ResourcePostDetailView, ResourceCommentsView, ResourceCreateView, ResourceUpdateView
+from .views import (ResourcePostListView, ResourcePostDetailView, ResourceCommentsView, 
+ResourceCreateView, ResourceUpdateView, ResourceDeleteView
+)
 from . import views
 
 urlpatterns = [
@@ -13,5 +15,7 @@ urlpatterns = [
          name='fresh_start-resourcepost_detail'),
     path('addresource/', views.addresource, name='fresh_start-addresource'),
     path('post/<int:pk>/update/', ResourceUpdateView.as_view(), name='post-update'),
+    path('post/<int:pk>/delete/', ResourceDeleteView.as_view(), name='post-delete'),
     path('', views.add_resources, name='fresh_start-add_resources'),
-]
+    path('resources/new/', ResourceCreateView.as_view(), name='resource-create'),
+   ]
