@@ -15,6 +15,7 @@ class ResourcePost(models.Model):
     category = models.CharField(
         max_length=50, choices=Categories.choices, default=Categories.FOOD)
     thumbnail = models.URLField()
+    excerpt = models.CharField(max_length=50)
     month = models.CharField(max_length=3)
     day = models.CharField(max_length=2)
     content = models.TextField()

@@ -37,7 +37,7 @@ def addresource(request):
 def add_resources(request):
     return render(request, 'fresh_start/add_resources.html')
 
-# def create(request):
+def create(request):
     if request.method == 'GET':
         # create empty form
         form = EditorForm()
@@ -57,7 +57,7 @@ def add_resources(request):
             # set cleaned tags to ManyRelatedManager object
             post.tags.set(tags)
         # redirect to 'addresources.html/'
-        return HttpResponseRedirect(reverse('resourcepostl.html'))
+        return HttpResponseRedirect(reverse('resourcepost_form.html'))
 
 
 class ResourcePostListView(ListView):

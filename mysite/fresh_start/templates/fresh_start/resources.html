@@ -12,6 +12,7 @@
                 <p class="article-content">{{ post.thumbnail }}</p>
                 <p class="article-content"><a href="{% url 'post-detail' post.id %}">Read More/Comments</a></p>
                 {{ post.date_created }}
+                {{ post.excerpt }}
                 {% endfor%}
         </ul>
     </div>
