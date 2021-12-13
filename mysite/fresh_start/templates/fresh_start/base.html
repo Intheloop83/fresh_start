@@ -24,7 +24,6 @@
     <header class="site-header">
         <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
             <div class="container">
-                <a class="navbar-brand mr-4" href="{% url 'fresh_start-home'%}">Fresh Start</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
                     aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -50,6 +49,10 @@
         <div class="row">
             <div class="col-md-8">
                 {% block content %}{% endblock %}
+            </div>
+            <div class="col-md-4">
+                <img
+                    src="https://th.bing.com/th/id/OIP.Tp3ZK_6JjlMfu8yduiPCkQHaEc?w=305&h=183&c=7&r=0&o=5&dpr=2.25&pid=1.7">
             </div>
         </div>
         </div>

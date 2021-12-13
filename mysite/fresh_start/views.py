@@ -7,10 +7,6 @@ def home(request):
     return render(request, 'fresh_start/home.html')
 
 
-def resourcecom(request):
-    return render(request, 'fresh_start/resourcecom.html')
-
-
 def about(request):
     return render(request, 'fresh_start/about.html', {'title': 'About'})
 
@@ -53,7 +49,7 @@ def addresource(request):
             # set cleaned tags to ManyRelatedManager object
             post.tags.set(tags)
         # redirect to 'addresources.html/'
-        return HttpResponseRedirect(reverse('resourcepostl.html'))
+        return HttpResponseRedirect(reverse('resources.html'))
 
 
 class ResourcePostListView(ListView):
