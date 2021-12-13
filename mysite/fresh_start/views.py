@@ -30,26 +30,31 @@ def addresource(request):
 
 
 # def create(request):
-    if request.method == 'GET':
-        # create empty form
-        form = EditorForm()
-        return render(request=request, template_name='create.html', context={'form': form})
-    if request.method == 'POST':
-        # capture POST data as EditorForm instance
-        form = EditorForm(request.POST)
-        # validate form
-        if form.is_valid():
-            # get cleaned data from form
-            title = form.cleaned_data['title']
-            img_link = form.cleaned_data['img_link']
-            body = form.cleaned_data['body']
-            tags = form.cleaned_data['tags']
-            post = Post.objects.create(
-                title=title, body=body, img_link=img_link)
-            # set cleaned tags to ManyRelatedManager object
-            post.tags.set(tags)
-        # redirect to 'addresources.html/'
-        return HttpResponseRedirect(reverse('resources.html'))
+    # if request.method == 'GET':
+    # create empty form
+    # form = EditForm()
+    # return render(request=request, template_name='create.html', context={'form': form})
+    # if request.method == 'POST':
+    # capture POST data as EditorForm instance
+    #form = resourceform(request.POST)
+    # validate form
+    # if form.is_valid():
+    # get cleaned data from form
+    #resource1 = form.cleaned_data['resource']
+    #resource2 = form.cleaned_data['resource']
+    #borough1 = form.cleaned_data['Brooklyn']
+    ##borough2 = form.cleaned_data['Bronx']
+    #borough3 = form.cleaned_data['Manhattan']
+    #borough4 = form.cleaned_data['Queens']
+    #borough5 = form.cleaned_data['Staten Island']
+    #phonenumber = form.cleaned_data['phonenumber']
+
+    # post = Post.objects.create(
+    # title=title, body=body, img_link=img_li)
+    # set cleaned tags to ManyRelatedManager object
+    # post.tags.set(tags)
+    # redirect to 'addresources.html/'
+    # return HttpResponseRedirect(reverse('resources.html'))
 
 
 class ResourcePostListView(ListView):
