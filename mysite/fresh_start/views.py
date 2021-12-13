@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import ResourcePost
-
+from django.http import HttpResponseRedirect
+from django.template import Template , Context
 
 def home(request):
     return render(request, 'fresh_start/home.html')
@@ -33,7 +34,10 @@ def addresource(request):
     return render(request, 'fresh_start/addresource.html')
 
 
-# def create(request):
+def add_resources(request):
+    return render(request, 'fresh_start/add_resources.html')
+
+def create(request):
     if request.method == 'GET':
         # create empty form
         form = EditorForm()
@@ -53,7 +57,7 @@ def addresource(request):
             # set cleaned tags to ManyRelatedManager object
             post.tags.set(tags)
         # redirect to 'addresources.html/'
-        return HttpResponseRedirect(reverse('resourcepostl.html'))
+        return HttpResponseRedirect(reverse('resourcepost_form.html'))
 
 
 class ResourcePostListView(ListView):
@@ -70,3 +74,23 @@ class ResourcePostDetailView(DetailView):
 class ResourceCommentsView(ListView):
     model = ResourcePost
     template_name = 'fresh_start/resourcepost_detail.html'
+
+class ResourceCreateView(CreateView):
+    model = ResourcePost
+    fields = ['title', 'content']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+class ResourceUpdateView(UpdateView):
+    model = ResourcePost
+    fields = ['title', 'content']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+class ResourceDeleteView(DeleteView):
+    model = ResourcePost
+    success_url = '_/_'
