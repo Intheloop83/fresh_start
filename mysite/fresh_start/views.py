@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import ResourcePost
 from .forms import ResourceForm
 from django.http import HttpResponseRedirect
@@ -29,6 +29,21 @@ def resourcepost_detail(request, resourcenumber):
 
 
 def addresource(request):
+
+
+<< << << < HEAD
+== == == =
+    return render(request, 'fresh_start/addresource.html')
+
+
+def add_resources(request):
+    return render(request, 'fresh_start/add_resources.html')
+
+
+def create(request):
+
+
+>>>>>> > main
     if request.method == 'GET':
         form = ResourceForm()
         return render(request, 'fresh_start/addresource.html', context={'form': form})
@@ -37,40 +52,41 @@ def addresource(request):
         print(form)
         if form.is_valid():
             # get cleaned data from form
+<< << << < HEAD
             name = form.cleaned_data['name']
             url = form.cleaned_data['url']
             resource = ResourcePost.objects.create(title=name, thumbnail=url)
             return HttpResponseRedirect(reverse('fresh_start-resources'))
 
             """ borough1 = form.cleaned_data['Brooklyn']
-            #borough2 = form.cleaned_data['Bronx']
+            # borough2 = form.cleaned_data['Bronx']
             borough3 = form.cleaned_data['Manhattan']
             borough4 = form.cleaned_data['Queens']
-            #borough5 = form.cleaned_data['Staten Island']
-            #phonenumber = form.cleaned_data['phonenumber'] """
+            # borough5 = form.cleaned_data['Staten Island']
+            # phonenumber = form.cleaned_data['phonenumber'] """
 
 # def create(request):
 # def create_resource(request):
     # form =
     # if request.method == 'GET':
     # create empty form
-    #form = ResourceForm()
+    # form = ResourceForm()
     # return render(request=request, template_name='create.html', context={'form': form})
     # if request.method == 'POST':
     # capture POST data as EditorForm instance
-    #form = resourceform(request.POST)
+    # form = resourceform(request.POST)
     # validate form
 
     # if form.is_valid():
     # get cleaned data from form
-    #resource1 = form.cleaned_data['resource1']
-    #resource2 = form.cleaned_data['resource2']
-    #borough1 = form.cleaned_data['Brooklyn']
-    ##borough2 = form.cleaned_data['Bronx']
-    #borough3 = form.cleaned_data['Manhattan']
-    #borough4 = form.cleaned_data['Queens']
-    #borough5 = form.cleaned_data['Staten Island']
-    #phonenumber = form.cleaned_data['phonenumber']
+    # resource1 = form.cleaned_data['resource1']
+    # resource2 = form.cleaned_data['resource2']
+    # borough1 = form.cleaned_data['Brooklyn']
+    # borough2 = form.cleaned_data['Bronx']
+    # borough3 = form.cleaned_data['Manhattan']
+    # borough4 = form.cleaned_data['Queens']
+    # borough5 = form.cleaned_data['Staten Island']
+    # phonenumber = form.cleaned_data['phonenumber']
 
     # post = Post.objects.create(
     # resource1=resource1, resource2=resource2, borough1=borough1)
@@ -78,6 +94,18 @@ def addresource(request):
     # post.tags.set(tags)
     # redirect to 'addresources.html/'
     # return HttpResponseRedirect(reverse('/resources/'))
+== == == =
+            title = form.cleaned_data['title']
+            img_link = form.cleaned_data['img_link']
+            body = form.cleaned_data['body']
+            tags = form.cleaned_data['tags']
+            post = Post.objects.create(
+                title=title, body=body, img_link=img_link)
+            # set cleaned tags to ManyRelatedManager object
+            post.tags.set(tags)
+        # redirect to 'addresources.html/'
+        return HttpResponseRedirect(reverse('resourcepost_form.html'))
+>>>>>>> main
 
 
 class ResourcePostListView(ListView):
@@ -94,3 +122,23 @@ class ResourcePostDetailView(DetailView):
 class ResourceCommentsView(ListView):
     model = ResourcePost
     template_name = 'fresh_start/resourcepost_detail.html'
+
+class ResourceCreateView(CreateView):
+    model = ResourcePost
+    fields = ['title', 'content']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+class ResourceUpdateView(UpdateView):
+    model = ResourcePost
+    fields = ['title', 'content']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+class ResourceDeleteView(DeleteView):
+    model = ResourcePost
+    success_url = '_/_'

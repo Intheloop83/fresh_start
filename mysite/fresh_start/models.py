@@ -10,3 +10,6 @@ class ResourcePost(models.Model):
     thumbnail = models.URLField(null=True)
     featured = models.BooleanField(default=False)
     date_created = models.DateTimeField(default=datetime.now, blank=True)
+
+    def get_absolute_url(self):
+        return reverse('post-detail', kwargs={'pk: self.pk'})
