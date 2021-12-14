@@ -11,5 +11,5 @@ class ResourcePost(models.Model):
     featured = models.BooleanField(default=False)
     date_created = models.DateTimeField(default=datetime.now, blank=True)
 
-    def get_absolute_url(self):
-        return reverse('post-detail', kwargs={'pk: self.pk'})
+    # def get_absolute_url(self):
+    # return reverse('post-detail', kwargs={'pk: self.pk'})
