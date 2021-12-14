@@ -7,6 +7,6 @@ from django import forms
 
 class ResourcePost(models.Model):
     title = models.CharField(max_length=50)
-    thumbnail = models.URLField()
+    thumbnail = models.URLField(null=True)
     featured = models.BooleanField(default=False)
     date_created = models.DateTimeField(default=datetime.now, blank=True)
