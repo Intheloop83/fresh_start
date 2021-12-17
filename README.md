@@ -7,7 +7,7 @@
 
 
       
-![Fresh Start](https://rockbridge.cc/wp-content/uploads/2019/08/FRESH-START.jpg)
+![Fresh Start]("https://th.bing.com/th/id/OIP.Tp3ZK_6JjlMfu8yduiPCkQHaEc?w=305&h=183&c=7&r=0&o=5&dpr=2.25&pid=1.7)
 
 
 ### This project has been created by: 

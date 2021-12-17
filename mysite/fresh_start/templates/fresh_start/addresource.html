@@ -1,15 +1,22 @@
 {% extends "fresh_start/base.html" %}
 {% block content %}
+
+<!-- Create tag (h1) to display larger font of title -->
 <h1>Fresh Start: Add A Resource</h1>
 
+<!-- Create tag (h4) to display smaller font of text than that of the title above -->
+<h4> ***Please note: Once you submit your information, it will be added to our Resources page***</h4>
 
+<!-- Use Post method to correlate with form created in forms.py/ Create submit button for user to submit completed form -->
 <form action="" method="POST" name="resourceform">
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="Submit">
 </form>
 
+<!-- Create tag to display smaller font of text above/Use inline css to change font style -->
 <h3 style="font-style: italic"> Thank you for your addition and support for justice impacted individuals, as well as our
     mission to end food insecurity
     !</h3>
+
 {% endblock content %}
