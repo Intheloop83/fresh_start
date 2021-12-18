@@ -4,6 +4,7 @@ from .models import ResourcePost
 from .forms import ResourceForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from .forms import EditorForm
 
 
 def home(request):
@@ -94,3 +95,24 @@ class ResourcePostDetailView(DetailView):
 class ResourceCommentsView(ListView):
     model = ResourcePost
     template_name = 'fresh_start/resourcepost_detail.html'
+
+def edit(request, post_id):
+    if request.method == 'GET':
+        # get Post object by its post_id
+        post = Post.objects.get(pk=post_id)
+        # get a list of tag_id from ManyRelatedManager object
+        tags = []
+        for tag in post.tags.all():
+            tags.append(tag.tag_id)
+            # pre-populate form with values from Post attributes
+            form = EditorForm(initial={
+                'title': post.title,
+                'body': post.body,
+                'tags': tags,
+                'img_link': post.img_link
+            })
+            return render(
+                request=request,
+                template_name='edit.html',
+                context={ 'form': form, 'id': post_id}
+            )
