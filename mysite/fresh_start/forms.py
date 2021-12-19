@@ -12,6 +12,6 @@ class EditorForm(forms.Form):
     body = forms.CharField(widget=forms.Textarea, required=True)
     # create tag choices for MultipleChoiceField
     choices = []
-    for tag in tag.objects.all():
+    for tag in Tag.objects.all():
         choices.append((tag.tag_id, tag.name))
     tags = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=choices, required=True)
