@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from .models import ResourcePost
-from .forms import ResourceForm
+from .models import ResourcePost, Comment
+from .forms import ResourceForm, CommentForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
@@ -24,8 +24,24 @@ def resources(request):
 def resourcepost_detail(request, resourcenumber):
     if request.method == 'GET':
         resourcepost = ResourcePost.objects.get(pk=resourcenumber)
+        # context = {
+        #     'posts': ResourcePost.objects.all()
+        # }
 
-    return render(request, 'fresh_start/resourcepost_detail.html', context={'resource': resourcepost})
+    if request.method == 'GET':
+        form = CommentForm()
+        return render(request, 'fresh_start/resourcepost_detail.html', context={'form': form})
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        print(form)
+        if form.is_valid():
+            # get cleaned data from form
+            body = form.cleaned_data['body']
+            tag = form.cleaned_data['tag']
+            comment = Comment.objects.create(
+                body=body, post_id=resourcenumber)
+            return HttpResponseRedirect(reverse('fresh_start-resourcepost_detail'))
+        # return render(request, 'fresh_start/resourcepost_detail.html', context={'resource': resourcepost})
 
 
 def addresource(request):

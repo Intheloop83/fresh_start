@@ -6,9 +6,11 @@
 
 
 
-<form action="resourcespost_form.html">
+<form action="" method="POST" name="commentform">
+    {% csrf_token %}
+    {{ form }}
 
-    <label for="name">Add a Comment:</label><br>
+    <!-- <label for="name">Add a Comment:</label><br>
     <input type="text" id="name" comment="name"><br>
     <label for="name">Add a Tag:</label><br>
     <input type="checkbox" id="tag1" name="tag1" value="Food">
@@ -20,7 +22,7 @@
     <input type="checkbox" id="tag4" name="tag4" value="Support">
     <label for="tag4"> #Support</label><br>
     <input type="checkbox" id="tag5" name="tag5" value="Fresh Start">
-    <label for="tag5"> #Fresh Start</label><br>
+    <label for="tag5"> #Fresh Start</label><br> -->
     <input type="submit" value="Submit">
     <input type="submit" value="Delete">
 
