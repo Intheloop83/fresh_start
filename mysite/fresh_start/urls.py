@@ -11,5 +11,5 @@ urlpatterns = [
     path('resources/resourcepost_detail/<int>', ResourceCommentsView.as_view(),
          name='fresh_start-resourcepost_detail'),
     path('addresource/', views.addresource, name='fresh_start-addresource'),
-    path('edit/<int:post_id>', views.edit, name='edit')
+    path(r'^edit.html/', views.edit, name='edit')
 ]
