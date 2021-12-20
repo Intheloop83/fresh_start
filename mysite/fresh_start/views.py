@@ -4,7 +4,7 @@ from .models import ResourcePost
 from .forms import ResourceForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-
+from .forms import EditorForm
 
 def home(request):
     return render(request, 'fresh_start/home.html')
