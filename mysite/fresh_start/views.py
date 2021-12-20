@@ -112,7 +112,7 @@ def edit(request, post_id):
             })
             return render(
                 request=request,
-                template_name='edit.html',
+                template_name='fresh_start/edit.html',
                 context={ 'form': form, 'id': post_id}
             )
     if request.method == 'POST':
