@@ -7,7 +7,6 @@ class ResourceForm(forms.Form):
 
 class EditorForm(forms.Form):
     title = forms.CharField(max_length=255, required=True)
-    img_link = forms.URLField(required=True)
     body = forms.CharField(widget=forms.Textarea, required=True)
     # create tag choices for MultipleChoiceField
     choices = []

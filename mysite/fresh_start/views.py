@@ -108,7 +108,6 @@ def edit(request, post_id):
                 'title': post.title,
                 'body': post.body,
                 'tags': tags,
-                'img_link': post.img_link
             })
             return render(
                 request=request,

@@ -6,26 +6,27 @@
 
 
 
-<form action="resourcespost_form.html">
-
-    <label for="name">Add a Comment:</label><br>
-    <input type="text" id="name" comment="name"><br>
-    <label for="name">Add a Tag:</label><br>
-    <input type="checkbox" id="tag1" name="tag1" value="Food">
-    <label for="tag1"> #Food</label><br>
-    <input type="checkbox" id="tag2" name="tag2" value="NYC">
-    <label for="tag2"> #NYC</label><br>
-    <input type="checkbox" id="tag3" name="tag3" value="Justice">
-    <label for="tag3"> #Justice</label><br>
-    <input type="checkbox" id="tag4" name="tag4" value="Support">
-    <label for="tag4"> #Support</label><br>
-    <input type="checkbox" id="tag5" name="tag5" value="Fresh Start">
-    <label for="tag5"> #Fresh Start</label><br>
-    <input type="submit" value="Submit">
+<form action="" method="POST" name="EditorForm">
+    {% csrf_token %}
+    {{ form }}
+ -- <input type="submit" value="Submit">
     <input type="submit" value="Delete">
 
 </form>
 
-
+<article class="media content-section">
+    <div class="media-body">
+        <ul>
+            {% for post in object_list %}
+            <h2><a class="article-title" href="{% url 'comment' post.id %}">{{ comment.title }}</a></h2>
+            <a href="{{ comment.tag }}">
+                <p class="article-content">{{ comment.tag }}</p>
+                <p class="article-content"><a href="{% url 'comment' post.id %}">Add A Tag</a></p>
+                {{ post.date_created }}
+                {{ post.excerpt }}
+                {% endfor %}
+        </ul>
+    </div>
+</article>
 
 {% endblock content %}
