@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from .models import ResourcePost
+from .models import ResourcePost, Comment
 from .forms import ResourceForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -95,7 +95,7 @@ class ResourceCommentsView(ListView):
     model = ResourcePost
     template_name = 'fresh_start/resourcepost_detail.html'
 
-def edit(request, post_id):
+def Comment(request, post_id):
     if request.method == 'GET':
         # get Post object by its post_id
         post = Post.objects.get(pk=post_id)
@@ -111,7 +111,7 @@ def edit(request, post_id):
             })
             return render(
                 request=request,
-                template_name='edit.html',
+                template_name='resourcepost_detail.html',
                 context={ 'form': form, 'id': post_id}
             )
     if request.method == 'POST':
