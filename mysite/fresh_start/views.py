@@ -123,13 +123,12 @@ def Comment(request, post_id):
             if 'save' in request.POST:
                 # get cleaned data from form
                 title = form.cleaned_data['title']
-                img_link = form.cleaned_data['img_link']
                 body = form.cleaned_data['body']
                 tags = form.cleaned_data['tags']
                 # filter QuerySet object by post_id
                 posts = Post.objects.filter(pk=post_id)
                 # update QuerySet object with cleaned title, body, img_link
-                posts.update(title=title, body=body, img_link=img_link)
+                posts.update(title=title, body=body)
                 # set cleaned tags to ManyRelatedManager
                 posts[0].tags.set(tags)
                 # if form was submitted by clicking delete
