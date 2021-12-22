@@ -9,6 +9,17 @@
 <form action="" method="POST" name="EditorForm">
     {% csrf_token %}
     {{ form }}
+    <label for="name">Add a Comment:</label><br>
+    <input type="text" id="name" comment="name"><br>
+    <label for="name">Add a Tag:</label><br>
+    <input type="checkbox" id="tag1" name="tag1" value="Food">
+    <label for="tag1"> #Food</label><br>
+    <input type="checkbox" id="tag2" name="tag2" value="NYC">
+    <label for="tag2"> #NYC</label><br>
+    <input type="checkbox" id="tag3" name="tag3" value="Justice">
+    <label for="tag3"> #Justice</label><br>
+    <input type="checkbox" id="tag4" name="tag4" value="Support">
+    <label for="tag4"> #Support</label><br>
     <input type="submit" value="Submit">
     <input type="submit" value="Delete">
 
