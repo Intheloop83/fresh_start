@@ -7,14 +7,27 @@
     <div class="media-body">
         <ul>
             {% for post in object_list %}
-            <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+            <h2><a class="article-title">{{ post.title }}</a></h2>
             <a href="{{ post.thumbnail }}">
-                <p class="article-content">{{ post.thumbnail }}</p>
-                <p class="article-content"><a href="{% url 'post-detail' post.id %}">Read More/Comments</a></p>
-                {{ post.date_created }}
-                {{ post.excerpt }}
-                {% endfor%}
+                <p class="article-content">{{ post.thumbnail }}
+            </a></p>
+
+            {% endfor%}
         </ul>
     </div>
 </article>
+
+<h3> Please use the search bar below to get directions and contact information for the resources listed below. We deem
+    these specific resources to be some of the best connections for justice impacted individuals. For all other
+    resources listed on this page, please access the organizatons' website for more details.</h3>
+
+<body>
+    <section class="showcase">
+        <div class="elfsight-app-6588ca3e-a6cc-4ce9-bce4-75bbcea3a6e3" id="map">
+            <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+        </div>
+        <video>src="" muted loop autoplay</video>
+        <div class="overlay"></div>
+    </section>
+</body>
 {% endblock content %}
